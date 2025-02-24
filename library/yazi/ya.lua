@@ -53,6 +53,8 @@ function ya.manager_emit(cmd, args) end
 
 --- Display the given image within the specified area, and the image will downscale to fit that area automatically
 ---
+--- This function is only available in the async context.
+---
 ---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.image_show)
 ---
 ---@param url Url the Url of the image
@@ -68,6 +70,8 @@ function ya.image_show(url, rect) end
 
 --- Pre-cache the image to a specified url based on user-configured `max_width` and `max_height`
 ---
+--- This function is only available in the async context.
+---
 ---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.image_precache)
 ---
 ---@param src Url the source Url of the image
@@ -75,6 +79,8 @@ function ya.image_show(url, rect) end
 function ya.image_precache(src, dist) end
 
 --- Prompt users with a set of available keys
+---
+--- This function is only available in the async context.
 ---
 ---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.which)
 ---
@@ -106,6 +112,8 @@ function ya.which(opts, silent) end
 ---|3 The user has changed the input (only if `realtime` is true)
 
 --- Request user input
+---
+--- This function is only available in the async context.
 ---
 ---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.input)
 ---
@@ -140,3 +148,168 @@ function ya.dbg(...) end
 ---
 ---@param ... any the message to be logged
 function ya.error(...) end
+
+---@class ya.preview_code._opts
+---@field area ui.Rect `Rect` of the available preview area
+---@field file File `File` to be previewed
+---@field mime string String of the MIME type of the file
+---@field skip number Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos
+
+--- Preview the file as code into the specified area
+---
+--- This function is only available in the async context.
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.preview_code)
+---
+---@param opts ya.preview_code._opts the options of the input
+---
+---@return string|nil, any
+function ya.preview_code(opts) end
+
+---@alias widget # There may be a deficiency
+---| ui.Text
+---| ui.List
+---| ui.Bar
+---| ui.Border
+
+---@class ya.preview_widgets._opts
+---@field area ui.Rect `Rect` of the available preview area
+---@field file File `File` to be previewed
+---@field mime string String of the MIME type of the file
+---@field skip number Number of units to skip. The units depend on your previewer, such as lines for code and percentages for videos
+
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.preview_widgets)
+---
+--- This function is only available in the async context.
+---
+---@param opts ya.preview_widgets._opts the options of the input
+---@param widgets widget[] List of renderable widgets
+function ya.preview_widgets(opts, widgets) end
+
+--- When a plugin is executed asynchronously, an isolated async context is created for it automatically.
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.sync)
+---
+---@param cb fun(state, data)
+function ya.sync(cb) end
+
+--- Returns a string describing the specific operating system in use
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.target_os)
+---
+---@return "linux"|"macos"|"ios"|"freebsd"|"dragonfly"|"netbsd"|"openbsd"|"solaris"|"android"|"windows"
+function ya.target_os() end
+
+--- Returns the family of the operating system
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.target_family)
+---
+---@return "unix"|"windows"|"wasm"
+function ya.target_family() end
+
+--- Returns the hash of a given string
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.hash)
+---
+---@param str string the string to calculate the hash for
+---
+---@return string
+function ya.hash(str) end
+
+--- Quote characters that may have special meaning in a shell
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.quote)
+---
+---@param str string the string to be quoted
+---
+---@return string
+function ya.quote(str) end
+
+---@class ya.truncate._opts
+---@field max integer the maximum length of the text
+---@field rtl boolean whether the text is right-to-left
+
+--- Truncate the text to the specified length and return it
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.truncate)
+---
+---@param text string the text to be truncated
+---@param opts ya.truncate._opts the options of the truncation
+---
+---@return string
+function ya.truncate(text, opts) end
+
+--- Get or set the content of the system clipboard
+---
+--- This function is only available in the async context.
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.clipboard)
+---
+---@param text? string value to be set. If not provided, the content of the clipboard will be returned.
+---
+---@return string|nil
+function ya.clipboard(text) end
+
+--- Returns the current timestamp, which is a float, the integer part represents the seconds, and the decimal part represents the milliseconds
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.time)
+---
+function ya.time() end
+
+--- Waits until secs has elapsed
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.sleep)
+---
+---@param secs number the number of seconds to sleep
+---
+---@return string|nil
+function ya.sleep(secs) end
+
+--- Returns the user id of the current user
+---
+--- Only available on Unix-like systems
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.uid)
+---
+---@return integer
+function ya.uid() end
+
+--- Returns the group id of the current user
+---
+--- Only available on Unix-like systems
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.gid)
+---
+---@return integer
+function ya.gid() end
+
+--- Get the name of the user
+---
+--- Only available on Unix-like systems
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.user_name)
+---
+---@param uid? integer the user id of the user. If not set, it will use the current user's id
+---
+---@return string|nil
+function ya.user_name(uid) end
+
+--- Get the name of the group
+---
+--- Only available on Unix-like systems
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.group_name)
+---
+---@param gid? integer the group id of the user. If not set, it will use the current user's id
+---
+---@return string|nil
+function ya.group_name(gid) end
+
+--- Returns the hostname of the current machine
+---
+---Only available on Unix-like systems
+---
+---[Open in Browser](https://yazi-rs.github.io/docs/plugins/utils#ya.host_name)
+---
+---@return string|nil
+function ya.host_name() end

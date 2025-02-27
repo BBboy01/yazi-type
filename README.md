@@ -21,7 +21,7 @@ Examples:
     opts = {
       library = {
         "local/path/where/this/repo/is",
-        { path = "local/path/where/this/repo/is", words = {"ya", "ps", "fs", "Command"} },
+        { path = "local/path/where/this/repo/is", words = {"ya", "ui", "ps", "fs", "Command"} }, --- conditional load
       },
     },
 },

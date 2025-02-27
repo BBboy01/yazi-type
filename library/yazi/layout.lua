@@ -205,6 +205,7 @@ function Style.reset(self) end
 ---@field align fun(self: ui.Text, alignment: ui.Text.LEFT|ui.Text.CENTER|ui.Text.RIGHT): ui.Text Set the alignment of the text
 ---@field wrap fun(self: ui.Text, alignment: ui.Text.WRAP_NO|ui.Text.WRAP|ui.Text.WRAP_TRIM): ui.Text Set the wrap of the text
 ---@field style fun(self: ui.Text, style: ui.Style): ui.Text Set the style of the text
+---@field parse fun(code: string): ui.Text parse an `ANSI escape sequence` string into a text
 ---
 ---@field LEFT any
 ---@field CENTER any

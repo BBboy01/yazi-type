@@ -98,6 +98,7 @@ function Url(path) end
 ---@field tabs manager.Tabs All of tabs
 ---@field yanked manager.Yanked The yanked urls
 ---@field tasks tasks.Tasks All of tasks
+cx = {}
 
 ---[Open in Browser](https://yazi-rs.github.io/docs/plugins/types#app-data.manager-tabs)
 ---

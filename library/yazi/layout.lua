@@ -17,7 +17,7 @@
 ---@field Bar ui.Bar|ui.Bar_call
 ---@field Border ui.Border|ui.Border_call
 ---@field Gauge ui.GaugeMod
-local ui
+ui = {}
 
 ---A Rect is represented an area within the terminal
 ---You can get a pre-computed `Rect` through `ui.Layout()`. Note that if you intend to create a `Rect` yourself, ensure these values are calculated accurately; otherwise, it may cause Yazi to crash!

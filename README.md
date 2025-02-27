@@ -1,16 +1,4 @@
-> [!WARNING]
-> This addon is still in WIP
-
 [Type References](https://yazi-rs.github.io/docs/plugins/overview)
-
-- [x] Types
-- [x] Layout
-- [ ] Utils
-  - [x] ya
-  - [x] ps
-  - [x] fs
-  - [ ] Command
-  - [ ] Child
 
 # yazi type
 
